@@ -1,37 +1,74 @@
-### Text Adventure Game
+# Project: Terminal-Based Minesweeper Game in JavaScript
 
 #### Objective
 
-Your task is to create a simple text-based adventure game that can be played entirely in the console. The game should have different scenarios, items, and choices that affect the outcome.
+Your goal is to create a text-based Minesweeper game that runs in the terminal. The game should allow the user to uncover cells to find mines, while also providing flags to mark suspected mines.
 
-#### Requirements
+#### Features and Requirements
 
-1. **Scenarios**: Your game should have at least three different "rooms" or scenarios that the player can navigate to. For example, a forest, a cave, and a castle.
-2. **Choices**: At each location, the player should have to make a choice that affects what happens next. Choices could be as simple as going left or right or as complex as solving a riddle.
-3. **Items**: Your game should include at least two types of items that the player can pick up, use, or interact with. For example, a key to unlock a door or a potion to heal.
-4. **Win/Lose Conditions**: There should be at least one way to win the game and at least one way to lose the game.
-5. **State Management**: Keep track of the player's state (items in inventory, rooms visited, etc.)
-6. **Text Description**: Each room or scenario should have a text description telling the player what they see, hear, or experience. Include details that might hint at choices or actions they can take.
+1. **Board Size**: The game should offer at least two different board sizes: small (e.g., 5x5) and large (e.g., 10x10).
+2. **Mines**: Each board size should have a pre-defined number of randomly placed mines.
+3. **User Interaction**: Use an npm package like `prompt-sync` to interact with the user. Prompt the user to choose a board size before starting the game.
+4. **Cell Representation**: Use characters to represent the state of each cell on the board. For example, you can use:
+
+   - 'U' for an uncovered cell
+   - 'F' for a flagged cell
+   - '\*' for a mine
+
+5. **Gameplay**: The user should be prompted to perform one of the following actions on each turn:
+
+   - Uncover a cell
+   - Flag a cell
+   - Remove a flag from a cell
+
+6. **Validation**: Validate the user input to ensure it corresponds to a valid cell on the board.
+7. **Winning and Losing**:
+
+   - The game is won when all non-mine cells are uncovered.
+   - The game is lost if a mine is uncovered.
+
+8. **Hints**: When a cell without a mine is uncovered, display the number of adjacent mines. Use this information to update the board state.
+9. **Status Updates**: After each move, display the current state of the board and any relevant messages (e.g., "You found a mine! Game over.")
+10. **End Game**: Provide options for the user to restart the game or quit after each game ends.
 
 #### Optional Features
 
-1. **Combat**: Add a simple combat system with an enemy.
-2. **Randomness**: Include random elements (e.g., a monster appears 50% of the time you enter a room).
-3. **Saving/Loading**: Implement a way to save the current game state and load it later.
+1. **Time Tracking**: Track the amount of time taken to win the game and display it at the end.
+2. **High Scores**: Implement a high-score system that considers both the board size and the time taken to win.
+3. **Safe Start**: Ensure that the first cell uncovered is never a mine.
 
-#### Game Flow Example
+#### Technical Notes
 
-1. The game starts, and a text description of the first room is displayed.
-2. The player is given a set of choices (e.g., `Do you want to go left or right?`).
-3. Based on the choice, a new scenario unfolds, and new choices are presented.
-4. The player picks up items along the way that can be used later.
-5. Eventually, the player either reaches a winning condition (e.g., finding the treasure) or a losing condition (e.g., getting caught by a monster).
+- You're only allowed to use plain JavaScript and the terminal for this project.
+- Use an npm package like `prompt-sync` to gather user input. Install this package using npm.
 
-#### User Input
+#### Example
 
-You can use the `readline` or `prompt-sync` npm packages to get input from the user.
+```
+Welcome to Minesweeper!
 
-#### Tips
+Choose a board size:
+1. Small (5x5)
+2. Large (10x10)
 
-- Plan your game's scenarios, choices, and items on paper or digitally before starting to code.
-- Start with the basic requirements and then add optional features as time allows.
+Your choice: 1
+
+Current Board:
+UUUUU
+UUUUU
+UUUUU
+UUUUU
+UUUUU
+
+Your move:
+1. Uncover a cell
+2. Flag a cell
+3. Remove a flag
+
+Your choice: 1
+Enter the row and column to uncover (e.g., 2 3): 2 3
+
+[Board updates...]
+
+Would you like to play again? (Yes/No)
+```
